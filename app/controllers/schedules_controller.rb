@@ -28,8 +28,8 @@ class SchedulesController < ApplicationController
   # POST /schedules
   # POST /schedules.json
   def create
-    @schedule = Schedule.new(schedule_params)
-    @schedule.user = current_user
+    @schedule = Schedule.new(schedule_params, user:currnet_user)
+    #@schedule.user = current_user
 
     respond_to do |format|
       if @schedule.save
