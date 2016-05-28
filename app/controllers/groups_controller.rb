@@ -11,6 +11,8 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @membership = UsersGroup.new(member_id:current_user.id, group_id:params[:id])
+    @membership.save
   end
 
   # GET /groups/new

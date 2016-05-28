@@ -7,6 +7,7 @@ class SchedulesController < ApplicationController
   def index
     @schedules = Schedule.all
     @users = User.all
+    @groups= UsersGroup.where(member_id: current_user.id)
   end
 
   # GET /schedules/1
@@ -30,6 +31,7 @@ class SchedulesController < ApplicationController
   def create
     @schedule = Schedule.new(schedule_params, user:current_user)
     @schedule.user_id = current_user.id
+
 
     respond_to do |format|
       if @schedule.save

@@ -186,12 +186,13 @@
 <br>
 <h2>내가 속한 그룹</h2>
 <ul>
+ <% @groups.each do |g| %>
   <li>
-    <!--% @group.each do |group| %> 나중ㅇ에 db만들ㅇ어지면면 -->
-    <!--<span>%= group.name %></span>-->
-    <span>그룹이름</span>
+    <% group = Group.where(id:g.group_id).first %>
+    <span><a href="/groups/<%=g.group_id%>"><%= group.name%></a></span>
     <button type="button" class="btn btn-default" aria-label="remove" style="font-size: 10px; padding: 2px 4px;" >
     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
     </button>
   </li>
+ <% end %>
 </ul>
