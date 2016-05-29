@@ -27,7 +27,7 @@ class GroupsController < ApplicationController
     if k = Group.where(:name => params[:g_name]).take
       redirect_to "/groups/#{k.id}"
     else
-      flash[:notice] = "검색결과가 없습니다."
+      flash[:notice] = "그룹이 없습니다. 정확한 이름을 검색해주세요"
       redirect_to :back
     end
   end

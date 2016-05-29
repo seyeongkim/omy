@@ -12,6 +12,7 @@
 <div class="container">  
   <%= yield %>
 </div>
+    <%= render 'layouts/footer' %>
 <style>
 td {
     background-color : white;
@@ -33,6 +34,9 @@ th {
     font-weight : bold;
     font-size : 130%;
 }
+th.t {
+    width:5em;    
+}
 
 tr td:hover
 {
@@ -43,8 +47,15 @@ tr td:hover
 {
   background-color: #b94646;
 }
+.footer
+{
+ background-color:#000; margin-top:30px;
+}
 
-
+.footer_p
+{
+    color:#fff; margin:0 auto; height:70px; line-height:70px;
+}
 
 
 </style>
