@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Groups</h1>
+<h1 class="waves-effect waves-light btn red darken-3" >Search Groups</h1>
+
+<form action="/groups/find" method="post" >
+  <input type="text" name="g_name">
+  <input class="waves-effect waves-light btn red darken-3"type="submit">
+</form>
 
 <table>
   <thead>
@@ -20,6 +25,8 @@
     <% end %>
   </tbody>
 </table>
+<h1 class="waves-effect waves-light btn red darken-3">Creat Group</h1>
 
+<%= render 'form' %>
 
-<%= link_to 'New Group', new_group_path %>
+<%= link_to 'view all', groups_path %>

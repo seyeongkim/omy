@@ -5,9 +5,11 @@ class SchedulesController < ApplicationController
   # GET /schedules
   # GET /schedules.json
   def index
+    #@schedule = Schedule.new
+    @schedule = current_user.schedule
     @schedules = Schedule.all
     @users = User.all
-    @groups= UsersGroup.where(member_id: current_user.id)
+    @memberships= UsersGroup.where(member_id: current_user.id)
   end
 
   # GET /schedules/1
@@ -17,7 +19,7 @@ class SchedulesController < ApplicationController
 
   # GET /schedules/new
   def new
-    @schedule = Schedule.new
+    #@schedule = Schedule.new
 
      
   end
@@ -25,14 +27,59 @@ class SchedulesController < ApplicationController
   # GET /schedules/1/edit
   def edit
   end
+  
+  def schedule_status
+    @schedule = current_user.schedule
+    if @schedule.nil? || @schedule.time1.count == 0
+      arr = [0,0,0,0,0,0,0]
+      @schedule = current_user.schedule.create(time1: arr, time2: arr, time3: arr, time4: arr, time5: arr, time6: arr, time7: arr, time8: arr, time9: arr, time10: arr, time11: arr, time12: arr, time13: arr, time14: arr)
+    end
 
-  # POST /schedules
-  # POST /schedules.json
-  def create
-    @schedule = Schedule.new(schedule_params, user:current_user)
-    @schedule.user_id = current_user.id
+    if params[:s_id].include?('a')
+     @schedule.time1[params[:s_id][1..-1].to_i] = params[:state].to_i
+     
+    
+    elsif params[:s_id].include?('b')
+      @schedule.time2[params[:s_id][1..-1].to_i] = params[:state].to_i
 
+    elsif params[:s_id].include?('c')
+      @schedule.time3[params[:s_id][1..-1].to_i] = params[:state].to_i
 
+    elsif params[:s_id].include?('d')
+      @schedule.time4[params[:s_id][1..-1].to_i] = params[:state].to_i
+
+    elsif params[:s_id].include?('e')
+      @schedule.time5[params[:s_id][1..-1].to_i] = params[:state].to_i
+
+    elsif params[:s_id].include?('f')
+      @schedule.time6[params[:s_id][1..-1].to_i] = params[:state].to_i
+
+    elsif params[:s_id].include?('g')
+      @schedule.time7[params[:s_id][1..-1].to_i] = params[:state].to_i
+
+    elsif params[:s_id].include?('h')
+      @schedule.time8[params[:s_id][1..-1].to_i] = params[:state].to_i
+
+    elsif params[:s_id].include?('i')
+      @schedule.time9[params[:s_id][1..-1].to_i] = params[:state].to_i
+
+    elsif params[:s_id].include?('j')
+      @schedule.time10[params[:s_id][1..-1].to_i] = params[:state].to_i
+
+    elsif params[:s_id].include?('k')
+      @schedule.time11[params[:s_id][1..-1].to_i] = params[:state].to_i
+
+    elsif params[:s_id].include?('l')
+      @schedule.time12[params[:s_id][1..-1].to_i] = params[:state].to_i
+
+    elsif params[:s_id].include?('m')
+      @schedule.time13[params[:s_id][1..-1].to_i] = params[:state].to_i
+
+    elsif params[:s_id].include?('n')
+      @schedule.time14[params[:s_id][1..-1].to_i] = params[:state].to_i
+  
+    end
+    
     respond_to do |format|
       if @schedule.save
         format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
@@ -42,7 +89,34 @@ class SchedulesController < ApplicationController
         format.json { render json: @schedule.errors, status: :unprocessable_entity }
       end
     end
+    
   end
+
+  # POST /schedules
+  # POST /schedules.json
+  def create
+    # @schedule = Schedule.new
+    # i = 0
+    # for i in 0 .. 13  
+    # @schedule.mon[i] = params[:mon]
+    # @schedule.tue[i] = params[:tue]
+    # @schedule.wed[i] = params[:wed]
+    # @schedule.thu[i] = params[:thu]
+    # @schedule.fri[i] = params[:fri]
+    # @schedule.sat[i] = params[:sat]
+    # @schedule.sun[i] = params[:sun]
+    # @schedule.user_id = current_user.id
+    # end
+
+    # respond_to do |format|
+    #   if @schedule.save
+    #     format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
+    #     format.json { render :show, status: :created, location: @schedule }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @schedule.errors, status: :unprocessable_entity }
+    #   end
+    end
 
   # PATCH/PUT /schedules/1
   # PATCH/PUT /schedules/1.json

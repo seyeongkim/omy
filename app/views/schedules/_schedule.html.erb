@@ -1,38 +1,3 @@
-<p id="notice"><%= notice %></p>
-   <h3><%= @group.name %></h3>
-   <% @memberships.each do |member| %>
-   <% user = User.where(id: member.member_id).first %>
-   <p><%= user.email%></p>
-<% end %>
-   
-</p>
-<% sum = Array.new(14) { Array.new(7) }%>
-    <% for idx in 0 .. 13%>
-       <% sum[idx][0..6] = [0,0,0,0,0,0,0]%>
-    <%end%>
-    <% @memberships.each do |member| %>
-       <% user = User.where(id: member.member_id).first %>
-
-         <% for i in 0 .. 6 %>
-           <% sum[0][i] = sum[0][i] + user.schedule.time1[i]%>
-           <% sum[1][i] = sum[1][i] + user.schedule.time2[i]%>
-           <% sum[2][i] = sum[2][i] + user.schedule.time3[i]%>
-           <% sum[3][i] = sum[3][i] + user.schedule.time4[i]%>
-           <% sum[4][i] = sum[4][i] + user.schedule.time5[i]%>
-           <% sum[5][i] = sum[5][i] + user.schedule.time6[i]%>
-           <% sum[6][i] = sum[6][i] + user.schedule.time7[i]%>
-           <% sum[7][i] = sum[7][i] + user.schedule.time8[i]%>
-           <% sum[8][i] = sum[8][i] + user.schedule.time9[i]%>
-           <% sum[9][i] = sum[9][i] + user.schedule.time10[i]%>
-           <% sum[10][i] = sum[10][i] + user.schedule.time11[i]%>
-           <% sum[11][i] = sum[11][i] + user.schedule.time12[i]%>
-           <% sum[12][i] = sum[12][i] + user.schedule.time13[i]%>
-           <% sum[13][i] = sum[13][i] + user.schedule.time14[i]%>
-         <% end %>
-         
-  <%end%>
-
-
 <table style ="margin:0 auto">
   <thead>
     <tr class = 't' align="center" > >
@@ -49,148 +14,142 @@
   <tbody> 
     <tr class = 'r1'>
       <th class = 't'>07:30 ~ 09:00</th>
-
       <% for i in 0 .. 6 %>
-        <% if sum[0][i] == 0 %>
+        <% if @schedule.time1[i] == 0 %>
         <td class = "off" id = 'a<%= i %>'><i></i></td>
-        <% else %>
+        <%else%>
         <td class = "on" id = 'a<%= i %>'><i></i></td>
-        <%end%>
+        <% end %>
       <% end %>
-     
     </tr>
     <tr class = 'r2'>
       <th class = 't'>09:00 ~ 10:30</th>
       <% for i in 0 .. 6 %>
-        <% if sum[1][i] == 0 %>
+        <% if @schedule.time2[i] == 0 %>
         <td class = "off" id = 'b<%= i %>'><i></i></td>
-        <% else %>
+        <%else%>
         <td class = "on" id = 'b<%= i %>'><i></i></td>
-        <%end%>
-      <% end %>
+        <% end %>
+      <%end%>
     </tr>
     <tr class = 'r3'>
       <th class = 't'>10:30 ~ 12:00</th>
       <% for i in 0 .. 6 %>
-        <% if sum[2][i] == 0 %>
+        <% if @schedule.time3[i] == 0 %>
         <td class = "off" id = 'c<%= i %>'><i></i></td>
-        <% else %>
+        <%else%>
         <td class = "on" id = 'c<%= i %>'><i></i></td>
-        <%end%>
+        <% end %>
       <% end %>
     </tr>
     <tr class = 'r4'>
       <th class = 't'>12:00 ~ 13:30</th>
       <% for i in 0 .. 6 %>
-        <% if sum[3][i] == 0 %>
+        <% if @schedule.time4[i] == 0 %>
         <td class = "off" id = 'd<%= i %>'><i></i></td>
-        <% else %>
+        <%else%>
         <td class = "on" id = 'd<%= i %>'><i></i></td>
-        <%end%>
+        <% end %>
       <% end %>
     <tr class = 'r5'>
       <th class = 't'>13:30 ~ 15:00</th>
       <% for i in 0 .. 6 %>
-        <% if sum[4][i] == 0 %>
+        <% if @schedule.time5[i] == 0 %>
         <td class = "off" id = 'e<%= i %>'><i></i></td>
-        <% else %>
+        <%else%>
         <td class = "on" id = 'e<%= i %>'><i></i></td>
-        <%end%>
+        <% end %>
       <% end %>
     </tr>
       <tr class = 'r6'>      
       <th class = 't'>15:00 ~ 16:30</th>
       <% for i in 0 .. 6 %>
-                <% if sum[5][i] == 0 %>
+        <% if @schedule.time6[i] == 0 %>
         <td class = "off" id = 'f<%= i %>'><i></i></td>
-        <% else %>
+        <%else%>
         <td class = "on" id = 'f<%= i %>'><i></i></td>
-        <%end%>
+        <% end %>
       <% end %>
     </tr>
     <tr class = 'r7'>
       <th class = 't'>16:30 ~ 18:00</th>
       <% for i in 0 .. 6 %>
-                <% if sum[6][i] == 0 %>
+        <% if @schedule.time7[i] == 0 %>
         <td class = "off" id = 'g<%= i %>'><i></i></td>
-        <% else %>
+        <%else%>
         <td class = "on" id = 'g<%= i %>'><i></i></td>
-        <%end%>
+        <% end %>
       <% end %>
     </tr>
     <tr class = 'r8'>
       <th class = 't'>18:00 ~ 19:00</th>
       <% for i in 0 .. 6 %>
-                <% if sum[7][i] == 0 %>
+        <% if @schedule.time8[i] == 0 %>
         <td class = "off" id = 'h<%= i %>'><i></i></td>
-        <% else %>
+        <%else%>
         <td class = "on" id = 'h<%= i %>'><i></i></td>
-        <%end%>
+        <% end %>
       <% end %>
     </tr>
     <tr class = 'r9'>
       <th class = 't'>19:00 ~ 20:00</th>
       <% for i in 0 .. 6 %>
-                <% if sum[8][i] == 0 %>
+        <% if @schedule.time9[i] == 0 %>
         <td class = "off" id = 'i<%= i %>'><i></i></td>
-        <% else %>
+        <%else%>
         <td class = "on" id = 'i<%= i %>'><i></i></td>
-        <%end%>
+        <% end %>
       <% end %>
     </tr>
     <tr class = 'r10'>
       <th class = 't'>20:00 ~ 21:00</th>
       <% for i in 0 .. 6 %>
-                <% if sum[9][i] == 0 %>
+        <% if @schedule.time10[i] == 0 %>
         <td class = "off" id = 'j<%= i %>'><i></i></td>
-        <% else %>
+        <%else%>
         <td class = "on" id = 'j<%= i %>'><i></i></td>
-        <%end%>
+        <% end %>
       <% end %>
     </tr>
     <tr class = 'r11'>
       <th class = 't'>21:00 ~ 22:00</th>
       <% for i in 0 .. 6 %>
-                <% if sum[10][i] == 0 %>
+        <% if @schedule.time11[i] == 0 %>
         <td class = "off" id = 'k<%= i %>'><i></i></td>
-        <% else %>
+        <%else%>
         <td class = "on" id = 'k<%= i %>'><i></i></td>
-        <%end%>
+        <% end %>
       <% end %>
     </tr>
     <tr class = 'r12'>
       <th class = 't'>22:00 ~ 23:00</th>
       <% for i in 0 .. 6 %>
-                <% if sum[11][i] == 0 %>
+        <% if @schedule.time12[i] == 0 %>
         <td class = "off" id = 'l<%= i %>'><i></i></td>
-        <% else %>
+        <%else%>
         <td class = "on" id = 'l<%= i %>'><i></i></td>
-        <%end%>
+        <% end %>
       <% end %>
     </tr>
     <tr class = 'r13'>
       <th class = 't'>23:00 ~ 00:00</th>
       <% for i in 0 .. 6 %>
-                <% if sum[12][i] == 0 %>
+        <% if @schedule.time13[i] == 0 %>
         <td class = "off" id = 'm<%= i %>'><i></i></td>
-        <% else %>
-        <td class = "on" id = 'm<%= i %>'><i></i></td>
-        <%end%>
+        <%else%>
+        <td class = "on" id = 'mUU<%= i %>'><i></i></td>
+        <% end %>
       <% end %>
     </tr>
     <tr class = 'r0'>
       <th class = 't'>00:00 ~ 07:30</th>
       <% for i in 0 .. 6 %>
-                <% if sum[13][i] == 0 %>
+        <% if @schedule.time14[i] == 0 %>
         <td class = "off" id = 'n<%= i %>'><i></i></td>
-        <% else %>
+        <%else%>
         <td class = "on" id = 'n<%= i %>'><i></i></td>
-        <%end%>
+        <% end %>
       <% end %>
     </tr>
   </tbody>
 </table>
-
-
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>

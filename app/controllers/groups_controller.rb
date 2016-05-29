@@ -6,17 +6,36 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     @groups = Group.all
+    @group = Group.new
+
   end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @membership = UsersGroup.new(member_id:current_user.id, group_id:params[:id])
-    @membership.save
+    
+    unless UsersGroup.where(member_id:current_user.id).where(group_id: params[:id]).first
+      @membership = UsersGroup.new(member_id:current_user.id, group_id:params[:id])
+      @membership.save
+    end
+    
+    @memberships = UsersGroup.where(group_id:params[:id])
   end
+  
+  
+  def find
+    if k = Group.where(:name => params[:g_name]).take
+      redirect_to "/groups/#{k.id}"
+    else
+      flash[:notice] = "검색결과가 없습니다."
+      redirect_to :back
+    end
+  end
+
 
   # GET /groups/new
   def new
+
     @group = Group.new
   end
 
@@ -74,4 +93,16 @@ class GroupsController < ApplicationController
     def group_params
       params.require(:group).permit(:name)
     end
+
+ 
+  #   @membership = UseersGroup.where(group_id:id)
+  # member = UsersGroup.length
+  #     for k in 0 .. 13
+  #       for j in 0 .. 6
+		#       for i in 0 .. member
+		# 	comparison[k][j] += member[i].time{#k}'[j]
+		# 	    end
+		# 	  end
+		# 	end
+  #   end
 end
