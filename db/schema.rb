@@ -20,10 +20,16 @@ ActiveRecord::Schema.define(version: 20160528055504) do
   end
 
   create_table "schedules", force: :cascade do |t|
-    t.string   "content",    default: " "
+    t.text     "mon"
+    t.text     "tue"
+    t.text     "wed"
+    t.text     "thu"
+    t.text     "fri"
+    t.text     "sat"
+    t.text     "sun"
     t.integer  "user_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

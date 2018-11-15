@@ -1,19 +1,6 @@
-<p id="notice"><%= notice %></p>
-
-
-
- <div class="collection">
-    <a href="#!" class="collection-item red-text text-darken-2"><%= @group.name %><span class="new badge red darken-3" type="submit" name="action">가입하기</span></a> 
- </div>
- 
-  
-</p>
-
-
-
 <table style ="margin:0 auto">
   <thead>
-    <tr class = 't'>
+    <tr class = 't' align="center" > >
       <th>시각</th>
       <td>월</td>
       <td>화</td>
@@ -25,103 +12,93 @@
     </tr>
   </thead>
   <tbody> 
-  <!--시간대별로 for문을 이용하여 id 설정  -->
-    
+    <%days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']%>
     <tr class = 'r1'>
       <th class = 't'>07:30 ~ 09:00</th>
-      <% for i in 1 .. 7 %>
-      <td id = 'b<%= i %>'><i></i></td>
+      <% for i in 1 .. 7  %>
+      <% if @schedule.mon[i-1][1] == 0 %>
+      <td class = "off" id = 'a<%= i %>'><i></i></td>
+      <% else %>
+      <td class = "on" id = 'a<%= i %>'><i></i></td>
+      <%end%>
       <% end %>
     </tr>
     <tr class = 'r2'>
       <th class = 't'>09:00 ~ 10:30</th>
       <% for i in 1 .. 7 %>
-      <td id = 'c<%= i %>'><i></i></td>
+      <td class = "off" id = 'b<%= i %>'><i></i></td>
       <% end %>
     </tr>
     <tr class = 'r3'>
       <th class = 't'>10:30 ~ 12:00</th>
       <% for i in 1 .. 7 %>
-      <td id = 'd<%= i %>'><i></i></td>
+      <td class = "off" id = 'c<%= i %>'><i></i></td>
       <% end %>
     </tr>
     <tr class = 'r4'>
       <th class = 't'>12:00 ~ 13:30</th>
       <% for i in 1 .. 7 %>
-      <td id = 'e<%= i %>'><i></i></td>
+      <td class = "off" id = 'c<%= i %>'><i></i></td>
       <% end %>
     <tr class = 'r5'>
       <th class = 't'>13:30 ~ 15:00</th>
       <% for i in 1 .. 7 %>
-      <td id = 'f<%= i %>'><i></i></td>
+      <td class = "off" id = 'd<%= i %>'><i></i></td>
       <% end %>
     </tr>
       <tr class = 'r6'>      
       <th class = 't'>15:00 ~ 16:30</th>
       <% for i in 1 .. 7 %>
-      <td id = 'g<%= i %>'><i></i></td>
+      <td class = "off" id = 'e<%= i %>'><i></i></td>
       <% end %>
     </tr>
     <tr class = 'r7'>
       <th class = 't'>16:30 ~ 18:00</th>
       <% for i in 1 .. 7 %>
-      <td id = 'h<%= i %>'><i></i></td>
+      <td class = "off" id = 'f<%= i %>'><i></i></td>
       <% end %>
     </tr>
     <tr class = 'r8'>
       <th class = 't'>18:00 ~ 19:00</th>
       <% for i in 1 .. 7 %>
-      <td id = 'i<%= i %>'><i></i></td>
+      <td class = "off" id = 'g<%= i %>'><i></i></td>
       <% end %>
     </tr>
     <tr class = 'r9'>
       <th class = 't'>19:00 ~ 20:00</th>
       <% for i in 1 .. 7 %>
-      <td id = 'j<%= i %>'><i></i></td>
+      <td class = "off" id = 'h<%= i %>'><i></i></td>
       <% end %>
     </tr>
     <tr class = 'r10'>
       <th class = 't'>20:00 ~ 21:00</th>
       <% for i in 1 .. 7 %>
-      <td id = 'k<%= i %>'><i></i></td>
+      <td class = "off" id = 'i<%= i %>'><i></i></td>
       <% end %>
     </tr>
     <tr class = 'r11'>
       <th class = 't'>21:00 ~ 22:00</th>
       <% for i in 1 .. 7 %>
-      <td id = 'l<%= i %>'><i></i></td>
+      <td class = "off" id = 'j<%= i %>'><i></i></td>
       <% end %>
     </tr>
     <tr class = 'r12'>
       <th class = 't'>22:00 ~ 23:00</th>
       <% for i in 1 .. 7 %>
-      <td id = 'm<%= i %>'><i></i></td>
+      <td class = "off" id = 'k<%= i %>'><i></i></td>
       <% end %>
     </tr>
     <tr class = 'r13'>
       <th class = 't'>23:00 ~ 00:00</th>
       <% for i in 1 .. 7 %>
-      <td id = 'n<%= i %>'><i></i></td>
+      <td class = "off" id = 'l<%= i %>'><i></i></td>
       <% end %>
     </tr>
     <tr class = 'r0'>
       <th class = 't'>00:00 ~ 07:30</th>
       <% for i in 1 .. 7 %>
-        <td class="color-change" id = 'a<%= i %>'><i></i></td>
+        <td class = "off" id = 'm<%= i %>'><i></i></td>
       <% end %>
     </tr>
   </tbody>
-    <% comparison = Array.new(91) %>
-    <% member = UsersGroup.length %>
-    <% for i in 0 .. 90 %>
-    <% for times in 1 .. 13 %>
-    <% for user in 1 .. member %>
-    <% comparion[i] += user %> 
-    <% end %>
-    <% end %>
-    <% end %>
-    <% end %>
 </table>
-
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>

@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   resources :groups
-  resources :groups
-  resources :groups
-  root 'schedules#new'
+  root 'schedules#index'
   devise_for :users
   resources :schedules
+  post 'schedules/schedule_status'
+  post 'groups/find'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

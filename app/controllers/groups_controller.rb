@@ -6,14 +6,26 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     @groups = Group.all
+    @group = Group.new
   end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
+
+  end
+  
+  def find
+    @k = Group.where(:name => params[:g_name]).take
+    redirect_to "/groups/join/#{k.id}"
+  end
+
+  def join
     @membership = UsersGroup.new(member_id:current_user.id, group_id:params[:id])
     @membership.save
+
   end
+  
 
   # GET /groups/new
   def new
@@ -74,4 +86,17 @@ class GroupsController < ApplicationController
     def group_params
       params.require(:group).permit(:name)
     end
+    
+    def group_schedule
+    @memberships = UsersGroup.where(group_id:id)
+    comparison = Array.new(91)
+      member = UsersGroup.length
+       for i in 0 .. 90
+         for times in 1 .. 13
+           for user in 1 .. member
+             comparion[i] += user 
+           end
+         end
+     end
+   end
 end

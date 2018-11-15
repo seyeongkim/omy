@@ -5,6 +5,8 @@ class SchedulesController < ApplicationController
   # GET /schedules
   # GET /schedules.json
   def index
+    #@schedule = Schedule.new
+     @schedule = current_user.schedule
     @schedules = Schedule.all
     @users = User.all
     @groups= UsersGroup.where(member_id: current_user.id)
@@ -17,7 +19,7 @@ class SchedulesController < ApplicationController
 
   # GET /schedules/new
   def new
-    @schedule = Schedule.new
+    #@schedule = Schedule.new
 
      
   end
@@ -25,14 +27,38 @@ class SchedulesController < ApplicationController
   # GET /schedules/1/edit
   def edit
   end
+  
+  def schedule_status
+    @schedule = current_user.schedule
+    if @schedule.nil? || @schedule.mon.count == 0
+      arr = [0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+      @schedule = current_user.schedule.create(mon: arr, tue: arr, wed: arr, thu: arr, fri: arr, sat: arr, sun: arr)
+    end
 
-  # POST /schedules
-  # POST /schedules.json
-  def create
-    @schedule = Schedule.new(schedule_params, user:current_user)
-    @schedule.user_id = current_user.id
+    if params[:s_id].include?('1')
+     @schedule.mon[params[:s_id][0].ord - 97] = params[:state].to_i
+     
+    
+    elsif params[:s_id].include?('2')
+      @schedule.tue[params[:s_id][0].ord - 97] = params[:state].to_i
 
+    elsif params[:s_id].include?('3')
+      @schedule.wed[params[:s_id][0].ord - 97] = params[:state].to_i
 
+    elsif params[:s_id].include?('4')
+      @schedule.thu[params[:s_id][0].ord - 97] = params[:state].to_i
+
+    elsif params[:s_id].include?('5')
+      @schedule.fri[params[:s_id][0].ord - 97] = params[:state].to_i
+
+    elsif params[:s_id].include?('6')
+      @schedule.sat[params[:s_id][0].ord - 97] = params[:state].to_i
+ 
+    elsif params[:s_id].include?('7')
+      @schedule.sun[params[:s_id][0].ord - 97] = params[:state].to_i
+  
+    end
+    
     respond_to do |format|
       if @schedule.save
         format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
@@ -42,7 +68,34 @@ class SchedulesController < ApplicationController
         format.json { render json: @schedule.errors, status: :unprocessable_entity }
       end
     end
+    
   end
+
+  # POST /schedules
+  # POST /schedules.json
+  def create
+    # @schedule = Schedule.new
+    # i = 0
+    # for i in 0 .. 13  
+    # @schedule.mon[i] = params[:mon]
+    # @schedule.tue[i] = params[:tue]
+    # @schedule.wed[i] = params[:wed]
+    # @schedule.thu[i] = params[:thu]
+    # @schedule.fri[i] = params[:fri]
+    # @schedule.sat[i] = params[:sat]
+    # @schedule.sun[i] = params[:sun]
+    # @schedule.user_id = current_user.id
+    # end
+
+    # respond_to do |format|
+    #   if @schedule.save
+    #     format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
+    #     format.json { render :show, status: :created, location: @schedule }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @schedule.errors, status: :unprocessable_entity }
+    #   end
+    end
 
   # PATCH/PUT /schedules/1
   # PATCH/PUT /schedules/1.json
