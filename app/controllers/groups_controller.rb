@@ -7,11 +7,16 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.all
     @group = Group.new
+<<<<<<< HEAD
+=======
+
+>>>>>>> 20f47f33b828d68e2ce502c1f66332d278983faf
   end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
+<<<<<<< HEAD
 
   end
   
@@ -24,11 +29,32 @@ class GroupsController < ApplicationController
     @membership = UsersGroup.new(member_id:current_user.id, group_id:params[:id])
     @membership.save
 
+=======
+    
+    unless UsersGroup.where(member_id:current_user.id).where(group_id: params[:id]).first
+      @membership = UsersGroup.new(member_id:current_user.id, group_id:params[:id])
+      @membership.save
+    end
+    
+    @memberships = UsersGroup.where(group_id:params[:id])
+  end
+  
+  
+  def find
+    if k = Group.where(:name => params[:g_name]).take
+      redirect_to "/groups/#{k.id}"
+    else
+      flash[:notice] = "그룹이 없습니다. 정확한 이름을 검색해주세요"
+      redirect_to :back
+    end
+>>>>>>> 20f47f33b828d68e2ce502c1f66332d278983faf
   end
   
 
+
   # GET /groups/new
   def new
+
     @group = Group.new
   end
 
@@ -86,6 +112,7 @@ class GroupsController < ApplicationController
     def group_params
       params.require(:group).permit(:name)
     end
+<<<<<<< HEAD
     
     def group_schedule
     @memberships = UsersGroup.where(group_id:id)
@@ -100,3 +127,18 @@ class GroupsController < ApplicationController
      end
    end
 end
+=======
+
+ 
+  #   @membership = UseersGroup.where(group_id:id)
+  # member = UsersGroup.length
+  #     for k in 0 .. 13
+  #       for j in 0 .. 6
+		#       for i in 0 .. member
+		# 	comparison[k][j] += member[i].time{#k}'[j]
+		# 	    end
+		# 	  end
+		# 	end
+  #   end
+end
+>>>>>>> 20f47f33b828d68e2ce502c1f66332d278983faf

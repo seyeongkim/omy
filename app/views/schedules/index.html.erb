@@ -6,16 +6,20 @@
 <!--<%= sch.inspect %>-->
 
 
+<<<<<<< HEAD
 <center><h5>나의 스케줄</h5></center>
+=======
+<h1 class="waves-effect waves-light btn red darken-3">My schedule</h1>
+>>>>>>> 20f47f33b828d68e2ce502c1f66332d278983faf
 <%= render 'schedules/schedule' %>
 
 <br>
 <h1 class="waves-effect waves-light btn red darken-3">My group</h1>
 <ul>
- <% @groups.each do |g| %>
+ <% @memberships.each do |m| %>
   <li>
-    <% group = Group.where(id:g.group_id).first %>
-    <span><a href="/groups/<%=g.group_id%>"><%= group.name%></a></span>
+    <% group = Group.where(id:m.group_id).first %>
+    <span><a href='/groups/<%=m.group_id%>'><%= group.name %></a></span>
     <button type="button" class="btn btn-default" aria-label="remove" style="font-size: 10px; padding: 2px 4px;" >
     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
     </button>
@@ -39,7 +43,11 @@
 
       }
       else{
+<<<<<<< HEAD
         $(this).removeClass('off')
+=======
+                $(this).removeClass('off')
+>>>>>>> 20f47f33b828d68e2ce502c1f66332d278983faf
         $(this).addClass('on');
         value = 1;
       }

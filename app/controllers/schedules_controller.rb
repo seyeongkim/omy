@@ -6,10 +6,14 @@ class SchedulesController < ApplicationController
   # GET /schedules.json
   def index
     #@schedule = Schedule.new
+<<<<<<< HEAD
      @schedule = current_user.schedule
+=======
+    @schedule = current_user.schedule
+>>>>>>> 20f47f33b828d68e2ce502c1f66332d278983faf
     @schedules = Schedule.all
     @users = User.all
-    @groups= UsersGroup.where(member_id: current_user.id)
+    @memberships= UsersGroup.where(member_id: current_user.id)
   end
 
   # GET /schedules/1
@@ -30,6 +34,7 @@ class SchedulesController < ApplicationController
   
   def schedule_status
     @schedule = current_user.schedule
+<<<<<<< HEAD
     if @schedule.nil? || @schedule.mon.count == 0
       arr = [0,0,0,0,0,0,0,0,0,0,0,0,0,0]
       @schedule = current_user.schedule.create(mon: arr, tue: arr, wed: arr, thu: arr, fri: arr, sat: arr, sun: arr)
@@ -56,6 +61,55 @@ class SchedulesController < ApplicationController
  
     elsif params[:s_id].include?('7')
       @schedule.sun[params[:s_id][0].ord - 97] = params[:state].to_i
+=======
+    if @schedule.nil? || @schedule.time1.count == 0
+      arr = [0,0,0,0,0,0,0]
+      @schedule = current_user.schedule.create(time1: arr, time2: arr, time3: arr, time4: arr, time5: arr, time6: arr, time7: arr, time8: arr, time9: arr, time10: arr, time11: arr, time12: arr, time13: arr, time14: arr)
+    end
+
+    if params[:s_id].include?('a')
+     @schedule.time1[params[:s_id][1..-1].to_i] = params[:state].to_i
+     
+    
+    elsif params[:s_id].include?('b')
+      @schedule.time2[params[:s_id][1..-1].to_i] = params[:state].to_i
+
+    elsif params[:s_id].include?('c')
+      @schedule.time3[params[:s_id][1..-1].to_i] = params[:state].to_i
+
+    elsif params[:s_id].include?('d')
+      @schedule.time4[params[:s_id][1..-1].to_i] = params[:state].to_i
+
+    elsif params[:s_id].include?('e')
+      @schedule.time5[params[:s_id][1..-1].to_i] = params[:state].to_i
+
+    elsif params[:s_id].include?('f')
+      @schedule.time6[params[:s_id][1..-1].to_i] = params[:state].to_i
+
+    elsif params[:s_id].include?('g')
+      @schedule.time7[params[:s_id][1..-1].to_i] = params[:state].to_i
+
+    elsif params[:s_id].include?('h')
+      @schedule.time8[params[:s_id][1..-1].to_i] = params[:state].to_i
+
+    elsif params[:s_id].include?('i')
+      @schedule.time9[params[:s_id][1..-1].to_i] = params[:state].to_i
+
+    elsif params[:s_id].include?('j')
+      @schedule.time10[params[:s_id][1..-1].to_i] = params[:state].to_i
+
+    elsif params[:s_id].include?('k')
+      @schedule.time11[params[:s_id][1..-1].to_i] = params[:state].to_i
+
+    elsif params[:s_id].include?('l')
+      @schedule.time12[params[:s_id][1..-1].to_i] = params[:state].to_i
+
+    elsif params[:s_id].include?('m')
+      @schedule.time13[params[:s_id][1..-1].to_i] = params[:state].to_i
+
+    elsif params[:s_id].include?('n')
+      @schedule.time14[params[:s_id][1..-1].to_i] = params[:state].to_i
+>>>>>>> 20f47f33b828d68e2ce502c1f66332d278983faf
   
     end
     

@@ -2,6 +2,7 @@
   <thead>
     <tr class = 't' align="center" > >
       <th>시각</th>
+<<<<<<< HEAD
       <td>월</td>
       <td>화</td>
       <td>수</td>
@@ -21,10 +22,31 @@
       <% else %>
       <td class = "on" id = 'a<%= i %>'><i></i></td>
       <%end%>
+=======
+      <th>월</th>
+      <th>화</th>
+      <th>수</th>
+      <th>목</th>
+      <th>금</th>
+      <th>토</th>
+      <th>일</th>
+    </tr>
+  </thead>
+  <tbody> 
+    <tr class = 'r1'>
+      <th class = 't'>07:30 ~ 09:00</th>
+      <% for i in 0 .. 6 %>
+        <% if @schedule.time1[i] == 0 %>
+        <td class = "off" id = 'a<%= i %>'><i></i></td>
+        <%else%>
+        <td class = "on" id = 'a<%= i %>'><i></i></td>
+        <% end %>
+>>>>>>> 20f47f33b828d68e2ce502c1f66332d278983faf
       <% end %>
     </tr>
     <tr class = 'r2'>
       <th class = 't'>09:00 ~ 10:30</th>
+<<<<<<< HEAD
       <% for i in 1 .. 7 %>
       <td class = "off" id = 'b<%= i %>'><i></i></td>
       <% end %>
@@ -33,10 +55,29 @@
       <th class = 't'>10:30 ~ 12:00</th>
       <% for i in 1 .. 7 %>
       <td class = "off" id = 'c<%= i %>'><i></i></td>
+=======
+      <% for i in 0 .. 6 %>
+        <% if @schedule.time2[i] == 0 %>
+        <td class = "off" id = 'b<%= i %>'><i></i></td>
+        <%else%>
+        <td class = "on" id = 'b<%= i %>'><i></i></td>
+        <% end %>
+      <%end%>
+    </tr>
+    <tr class = 'r3'>
+      <th class = 't'>10:30 ~ 12:00</th>
+      <% for i in 0 .. 6 %>
+        <% if @schedule.time3[i] == 0 %>
+        <td class = "off" id = 'c<%= i %>'><i></i></td>
+        <%else%>
+        <td class = "on" id = 'c<%= i %>'><i></i></td>
+        <% end %>
+>>>>>>> 20f47f33b828d68e2ce502c1f66332d278983faf
       <% end %>
     </tr>
     <tr class = 'r4'>
       <th class = 't'>12:00 ~ 13:30</th>
+<<<<<<< HEAD
       <% for i in 1 .. 7 %>
       <td class = "off" id = 'c<%= i %>'><i></i></td>
       <% end %>
@@ -44,60 +85,158 @@
       <th class = 't'>13:30 ~ 15:00</th>
       <% for i in 1 .. 7 %>
       <td class = "off" id = 'd<%= i %>'><i></i></td>
+=======
+      <% for i in 0 .. 6 %>
+        <% if @schedule.time4[i] == 0 %>
+        <td class = "off" id = 'd<%= i %>'><i></i></td>
+        <%else%>
+        <td class = "on" id = 'd<%= i %>'><i></i></td>
+        <% end %>
+      <% end %>
+    <tr class = 'r5'>
+      <th class = 't'>13:30 ~ 15:00</th>
+      <% for i in 0 .. 6 %>
+        <% if @schedule.time5[i] == 0 %>
+        <td class = "off" id = 'e<%= i %>'><i></i></td>
+        <%else%>
+        <td class = "on" id = 'e<%= i %>'><i></i></td>
+        <% end %>
+>>>>>>> 20f47f33b828d68e2ce502c1f66332d278983faf
       <% end %>
     </tr>
       <tr class = 'r6'>      
       <th class = 't'>15:00 ~ 16:30</th>
+<<<<<<< HEAD
       <% for i in 1 .. 7 %>
       <td class = "off" id = 'e<%= i %>'><i></i></td>
+=======
+      <% for i in 0 .. 6 %>
+        <% if @schedule.time6[i] == 0 %>
+        <td class = "off" id = 'f<%= i %>'><i></i></td>
+        <%else%>
+        <td class = "on" id = 'f<%= i %>'><i></i></td>
+        <% end %>
+>>>>>>> 20f47f33b828d68e2ce502c1f66332d278983faf
       <% end %>
     </tr>
     <tr class = 'r7'>
       <th class = 't'>16:30 ~ 18:00</th>
+<<<<<<< HEAD
       <% for i in 1 .. 7 %>
       <td class = "off" id = 'f<%= i %>'><i></i></td>
+=======
+      <% for i in 0 .. 6 %>
+        <% if @schedule.time7[i] == 0 %>
+        <td class = "off" id = 'g<%= i %>'><i></i></td>
+        <%else%>
+        <td class = "on" id = 'g<%= i %>'><i></i></td>
+        <% end %>
+>>>>>>> 20f47f33b828d68e2ce502c1f66332d278983faf
       <% end %>
     </tr>
     <tr class = 'r8'>
       <th class = 't'>18:00 ~ 19:00</th>
+<<<<<<< HEAD
       <% for i in 1 .. 7 %>
       <td class = "off" id = 'g<%= i %>'><i></i></td>
+=======
+      <% for i in 0 .. 6 %>
+        <% if @schedule.time8[i] == 0 %>
+        <td class = "off" id = 'h<%= i %>'><i></i></td>
+        <%else%>
+        <td class = "on" id = 'h<%= i %>'><i></i></td>
+        <% end %>
+>>>>>>> 20f47f33b828d68e2ce502c1f66332d278983faf
       <% end %>
     </tr>
     <tr class = 'r9'>
       <th class = 't'>19:00 ~ 20:00</th>
+<<<<<<< HEAD
       <% for i in 1 .. 7 %>
       <td class = "off" id = 'h<%= i %>'><i></i></td>
+=======
+      <% for i in 0 .. 6 %>
+        <% if @schedule.time9[i] == 0 %>
+        <td class = "off" id = 'i<%= i %>'><i></i></td>
+        <%else%>
+        <td class = "on" id = 'i<%= i %>'><i></i></td>
+        <% end %>
+>>>>>>> 20f47f33b828d68e2ce502c1f66332d278983faf
       <% end %>
     </tr>
     <tr class = 'r10'>
       <th class = 't'>20:00 ~ 21:00</th>
+<<<<<<< HEAD
       <% for i in 1 .. 7 %>
       <td class = "off" id = 'i<%= i %>'><i></i></td>
+=======
+      <% for i in 0 .. 6 %>
+        <% if @schedule.time10[i] == 0 %>
+        <td class = "off" id = 'j<%= i %>'><i></i></td>
+        <%else%>
+        <td class = "on" id = 'j<%= i %>'><i></i></td>
+        <% end %>
+>>>>>>> 20f47f33b828d68e2ce502c1f66332d278983faf
       <% end %>
     </tr>
     <tr class = 'r11'>
       <th class = 't'>21:00 ~ 22:00</th>
+<<<<<<< HEAD
       <% for i in 1 .. 7 %>
       <td class = "off" id = 'j<%= i %>'><i></i></td>
+=======
+      <% for i in 0 .. 6 %>
+        <% if @schedule.time11[i] == 0 %>
+        <td class = "off" id = 'k<%= i %>'><i></i></td>
+        <%else%>
+        <td class = "on" id = 'k<%= i %>'><i></i></td>
+        <% end %>
+>>>>>>> 20f47f33b828d68e2ce502c1f66332d278983faf
       <% end %>
     </tr>
     <tr class = 'r12'>
       <th class = 't'>22:00 ~ 23:00</th>
+<<<<<<< HEAD
       <% for i in 1 .. 7 %>
       <td class = "off" id = 'k<%= i %>'><i></i></td>
+=======
+      <% for i in 0 .. 6 %>
+        <% if @schedule.time12[i] == 0 %>
+        <td class = "off" id = 'l<%= i %>'><i></i></td>
+        <%else%>
+        <td class = "on" id = 'l<%= i %>'><i></i></td>
+        <% end %>
+>>>>>>> 20f47f33b828d68e2ce502c1f66332d278983faf
       <% end %>
     </tr>
     <tr class = 'r13'>
       <th class = 't'>23:00 ~ 00:00</th>
+<<<<<<< HEAD
       <% for i in 1 .. 7 %>
       <td class = "off" id = 'l<%= i %>'><i></i></td>
+=======
+      <% for i in 0 .. 6 %>
+        <% if @schedule.time13[i] == 0 %>
+        <td class = "off" id = 'm<%= i %>'><i></i></td>
+        <%else%>
+        <td class = "on" id = 'm<%= i %>'><i></i></td>
+        <% end %>
+>>>>>>> 20f47f33b828d68e2ce502c1f66332d278983faf
       <% end %>
     </tr>
     <tr class = 'r0'>
       <th class = 't'>00:00 ~ 07:30</th>
+<<<<<<< HEAD
       <% for i in 1 .. 7 %>
         <td class = "off" id = 'm<%= i %>'><i></i></td>
+=======
+      <% for i in 0 .. 6 %>
+        <% if @schedule.time14[i] == 0 %>
+        <td class = "off" id = 'n<%= i %>'><i></i></td>
+        <%else%>
+        <td class = "on" id = 'n<%= i %>'><i></i></td>
+        <% end %>
+>>>>>>> 20f47f33b828d68e2ce502c1f66332d278983faf
       <% end %>
     </tr>
   </tbody>
